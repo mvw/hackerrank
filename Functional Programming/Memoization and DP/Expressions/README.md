@@ -33,4 +33,4 @@ scheme was needed, as brute-forcing up to 3^999 configurations seemed not possib
   [This article](https://hashrocket.com/blog/posts/the-adventures-of-generating-random-numbers-in-erlang-and-elixir)
   pointed to rand as the proper choice. 
   So I used ``rand:uniform(3)`` to generate random numbers from {1,2,3}.
-- ``combine/3`` returns a list of strings, knowing that io:format can deal with deep lists
+- ``combine/3`` returns a list of strings, knowing that ``io:format`` can deal with deep lists
