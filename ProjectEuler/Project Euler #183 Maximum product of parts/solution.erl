@@ -2,7 +2,7 @@
 -export([main/0]).
 
 main() ->
-	{ok, [Q]} = io:fread("", "~d"),
+  {ok, [Q]} = io:fread("", "~d"),
   L = read_list(Q),
   work(L),
   ok.
