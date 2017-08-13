@@ -13,6 +13,7 @@ a concave polygon has at least one reflex interior angle, i.e. an angle larger t
 My solutions checks this property.
 
 The article also notes that a non-concave polygon is convex. This gives another
-approach, using convex hull calculation combined with a check that all given points
-are in the convex hull.
+approach, using convex hull calculation combined with a check that all given points are in the convex hull.
 
+## Related to
+* [Convex Hull](http://github.com/mvw/hackerrank/tree/master/Functional%20Programming/Recursion/Convex%20Hull)
