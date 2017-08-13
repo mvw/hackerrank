@@ -7,7 +7,7 @@ We have a sequence of N integers x_i, N from {2,..,10^4}, x_i from {1,..,100}
 where we need to fill the N-1 gaps with binary operators op_i from {+,-,*}
 to get the total value 
 
-x_1 op_1 x_2 op_2 .. x_N = 0 (mod 101)
+x_1 op_1 x_2 op_2 .. op_{N-1} x_N = 0 (mod 101)
 
 where the usual operator precedence is not applied, we just evaluate from left to right.
 
