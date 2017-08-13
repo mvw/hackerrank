@@ -1,0 +1,5 @@
+This hackerrank domain is limited to the use of a couple of functional programming languages, 
+some challenges use lamdba calculus expressions. :-)
+
+So chances are good that the problems can be tackled within the 
+[run-time constraints](http://www.hackerrank.com/environment) for Erlang. 
