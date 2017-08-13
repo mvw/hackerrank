@@ -44,5 +44,11 @@ of the two angles and extend the angles range beyond 2pi where needed.
 
 We check the interior angles until we find a reflex one or have checked all of them.
 
+## Where the effort went
+Getting the signs right, to get correct angles for all quadrants.
+
+## Erlang Insights
+Some floating point maths, including using ``math:atan2/2`` and ``math:pi/0``.
+
 ## Related to
 * [Convex Hull](http://github.com/mvw/hackerrank/tree/master/Functional%20Programming/Recursion/Convex%20Hull)
