@@ -2,7 +2,7 @@
 -export([main/0]).
 
 main() ->
-	{ok, [A, B]} = io:fread("", "~d ~d"),
+  {ok, [A, B]} = io:fread("", "~d ~d"),
   Gcd = gcd(A, B),
   io:format("~p~n", [Gcd]).
 
