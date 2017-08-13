@@ -27,10 +27,10 @@ scheme was needed, as brute-forcing up to 3^999 configurations seemed not possib
 ## Erlang Insights
 - How does one get a random number in Erlang? It turns out two Erlang modules are available
   (using Erlang/OTP 20 [erts-9.0]):
-  - http://erlang.org/doc/man/rand.html
-  - http://erlang.org/doc/man/random.html
+  1. http://erlang.org/doc/man/rand.html
+  2. http://erlang.org/doc/man/random.html
 
   [This article](https://hashrocket.com/blog/posts/the-adventures-of-generating-random-numbers-in-erlang-and-elixir)
   pointed to rand as the proper choice. 
-  So I used rand:uniform(3) to generate random numbers from {1,2,3}.
-- combine/3 returns a list of strings, knowing that io:format can deal with deep lists
+  So I used ``rand:uniform(3)`` to generate random numbers from {1,2,3}.
+- ``combine/3`` returns a list of strings, knowing that io:format can deal with deep lists
