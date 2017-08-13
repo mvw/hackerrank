@@ -20,15 +20,15 @@ scheme was needed, as brute-forcing up to 3^999 configurations seemed not possib
 (The subdomain might be a hint as well :grin:)
 
 ## Notes
-- The modulus m=101 is a prime so Z/mZ is a finite field.
-- With only 100 values to choose up to 10^4 items from, repetition must
+* The modulus m=101 is a prime so Z/mZ is a finite field.
+* With only 100 values to choose up to 10^4 items from, repetition must
   occur.
 
 ## Erlang Insights
-- How does one get a random number in Erlang? It turns out two Erlang modules are available
+* How does one get a random number in Erlang? It turns out two Erlang modules are available
   (using Erlang/OTP 20 [erts-9.0]):
-  1. http://erlang.org/doc/man/rand.html
-  2. http://erlang.org/doc/man/random.html
+  * http://erlang.org/doc/man/rand.html
+  * http://erlang.org/doc/man/random.html
 
   [This article](https://hashrocket.com/blog/posts/the-adventures-of-generating-random-numbers-in-erlang-and-elixir)
   pointed to rand as the proper choice. 
