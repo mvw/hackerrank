@@ -19,8 +19,8 @@ thought, this will tackle only 6 of the 17 test cases.
 My next try was to re-run the code reduced such that only I/O was performed (and wrong answers were
 given), to see if I/O was within the given 12s time frame. It was.
 
-My next attempts assumed that maybe the large numbers might lead to even larger sums and thus too
-slow computions, so I did not sum up towards S, but reduced the goal S by each visited element.
+My next attempts assumed that maybe the large numbers might lead to even larger sums and thus to too
+slow computations, so I did not sum up towards S, but reduced the goal S by each visited element.
 No luck. 
 
 Then I tried to early exit the linear search by looking if 
