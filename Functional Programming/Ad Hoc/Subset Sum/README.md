@@ -6,8 +6,8 @@ http://www.hackerrank.com/challenges/subset-sum/problem
 We have a list of N positive integers a_i, where N from {1,..,10^5} and a_i from {1,..,10^9}.
 
 Against this we need to perform T queries S_j, T from {1,..,10^5} and S_j from {1,..,10^15}, 
-where we want to know what is the size of the smallest subset of {a_1,..,a_N} such that
-the sum of its elements is equal or larger than S_j or -1 if there is no such subset.
+where we want to know what the size of the smallest subset of {a_1,..,a_N} is, such that
+the sum of its elements is equal or larger than S_j. Or -1 if there is no such subset.
 
 ## Experience
 It makes sense to pack a subset to match the query sum S starting with the largest elements.
