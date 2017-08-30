@@ -27,20 +27,20 @@ Then I tried to early exit the linear search by looking if
 
   Sum+(N-Index)*H < S
   
-which was not worth the effort.
+which is an optimization, but was not worth the effort.
 
-Finally my brain kicked in and I took this baby more serious.
+Finally my brain kicked in and I took this baby more seriously.
 
-As the number of querys T can be quite large, it makes sense to
-once invest into well prepared data, and then run the T queries on this.
+As the number of queries T can be quite large, it makes sense to
+once invest into well-prepared data, and then run the T queries against this.
 
-- We only need to integrate/sum up our sorted list once and not T times.
-- And we can beat linear search through the list of sums by some bisection
+- we only need to integrate/sum up our sorted list once and not T times.
+- and we can beat linear search through the list of sums by some bisection
   method. At this point I remembered that I once used general balanced trees
-  for a similar task and that is what applied here too.
+  for a similar task and that is what I applied here too.
 
 ## Notes
 - That other task was Project Euler #183
 
 ## Erlang Insights
-- Another use of gb_trees and gb_trees:iterator_from/2 function 
+- Another use of ``gb_trees`` and the ``gb_trees:iterator_from/2`` function 
