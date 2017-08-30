@@ -16,7 +16,7 @@ So sorting the list of a_i in descending order is needed.
 As this problem was rated "easy", I expected this to be all, but I was wrong: With no additional
 thought, this will tackle only 6 of the 17 test cases.
 
-Next thing was to rerun the code reduced such that only I/O was performed (and wrong answers were
+My next try was to re-run the code reduced such that only I/O was performed (and wrong answers were
 given), to see if I/O was within the given 12s time frame. It was.
 
 My next attempts assumed that maybe the large numbers might lead to even larger sums and thus too
