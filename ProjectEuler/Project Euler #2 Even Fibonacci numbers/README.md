@@ -1,25 +1,25 @@
 My first attempt was solving the linear recurrence relation
 which leads to 
 
-  F_n = k_1 r_1^n + k_2 r_2^n
+    F_n = k_1 r_1^n + k_2 r_2^n
 
 and can be summed to a solution of the form
 
-  S = k_1 r_1^2 G(K, r_1^3) + k_2 r_2^2 G(K, r_2^3)
+    S = k_1 r_1^2 G(K, r_1^3) + k_2 r_2^2 G(K, r_2^3)
 
 where G(K, q) is the well known closed form of the 
 geometric series
 
-  G(K, q) = sum_(k=0)^K q^k = (q^(K+1)-1)/(q-1)
+    G(K, q) = sum_(k=0)^K q^k = (q^(K+1)-1)/(q-1)
   
 It reached 75/100, failing test case #3 with a "Wrong Answer".
 
 The reason is probably the limited precision of Erlang's float
 data type. The F_n solution uses the irrational numbers
 
-  r1 = (1+sqrt(5))/2 =  1.618..
-  r2 = (1-sqrt(5))/2 = -0.618..
-  [k1; k2] = 1/sqrt(5) [r1; -r2]
+    r1 = (1+sqrt(5))/2 =  1.618..
+    r2 = (1-sqrt(5))/2 = -0.618..
+    [k1; k2] = 1/sqrt(5) [r1; -r2]
 
 to generate the integer valued sequence F_n.
 
