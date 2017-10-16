@@ -31,7 +31,9 @@ We can concentrate on the top node and its left and right sets, which leads to a
 Example: Set 1..5 and top node 2.
 
 This splits the set into 1 < 2 < 3 4 5 so we have the b(1) left subtrees times b(3) right subtrees
-for this case. Here b(n) is the sought function which returns the number of BSTs for the set 1..N.
+for this case. 
+
+Here b(n) is the sought function which returns the number of BSTs for the set 1..N.
 
 Obviously b(1) is 1, as there is only one choice to place the single node.
 It turns out useful to define b(0) which is 1 too, because there is only one choice for an empty tree.
