@@ -8,7 +8,7 @@ the result of a pre-order traversal run through a binary search tree (BST).
 
 Pre-order traversal means first visit node, then visit left subtree then right subtree.
 
-## Experience
+## Solution
 We need to check if the order properties of the BST hold:
 - an empty tree (resulting in an empty list) is valid
 - the left subtree has only elements smaller than the node
@@ -38,3 +38,6 @@ left and right sublists.
 
 Finally we continue recursively with the checks of the left
 and (if this succeeds) the right sublist.
+
+## Related to
+* [Number of Binary Search Tree](http://github.com/mvw/hackerrank/tree/master/Functional%20Programming/Memoization%20and%20DP/Number%20of%20Binary%20Search%20Tree)
