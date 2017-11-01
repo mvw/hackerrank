@@ -12,6 +12,7 @@ I needed more attempts to get this one right and then correct than expected.
 When I sketched the first solution attempt on paper, this looked like a non-deterministic finite 
 automaton with some epsilon transitions:
 
+```erlang
 % We can model the verification system as epsilon-NFA:
 % - The initial state 0 is connected to the first symbol of each password
 %   via acceptance of that symbol
@@ -22,6 +23,7 @@ automaton with some epsilon transitions:
 % We could now read the login attempt string and determine symbol for symbol
 % what states can be reached, and if we got a final state among the reached
 % states once the LoginAttempt string has been read.
+```
 
 My impression was that this approach would allow to answer if a given loginAttempt string
 could be split into the words or not, but that it would not give the sequence of individual
