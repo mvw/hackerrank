@@ -9,7 +9,7 @@ Find the total bus transportation costs for a group of prisoners.
 
 This can be solved using graph theory.
 
-The prisoners (which are bound to other prisoners) are modeled by vertices, 
+The prisoners (those which are bound to other prisoners) are modeled by vertices, 
 the handcuffs form the edges of a graph.
 
 We determine the connected components, which are the prisoner groups
