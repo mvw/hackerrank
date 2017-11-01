@@ -37,7 +37,7 @@ words did not scale well, it took too much memory.
 
 Then I got the idea that the recognition process could be performed by a depth-first search, 
 so I returned to the sequential world. With a little bit of tweaking it turned into
-a solution which tackled all the test cases. I was happy I tackled the problem.
+a solution which tackled all the test cases. I was happy I solved the problem.
 
 However the name "Password Cracker FP" made me wonder if the suffix "FP" meant that there 
 was a non-FP version of this problem.
@@ -50,4 +50,4 @@ So I entered my solution from here there. Easy kill. However I was first surpris
 extra test cases and then got very soon humbled by the fact that it did not make full score there. 
 
 I had to put in some extra work to fix some undetected bugs. It also needed extra optimization to
-run within the given time frame.
+run within the given time frame. See the comments in the source code.
