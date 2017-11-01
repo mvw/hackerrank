@@ -22,7 +22,7 @@ automaton with some epsilon transitions:
 % - the last symbols of the passwords could be final states
 % We could now read the login attempt string and determine symbol for symbol
 % what states can be reached, and if we got a final state among the reached
-% states once the LoginAttempt string has been read.
+% states once the LoginAttempt string has been read it can be recognized.
 ```
 
 My impression was that this approach would allow to answer if a given loginAttempt string
