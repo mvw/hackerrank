@@ -9,8 +9,10 @@ Find the biggest rectangle under the height bars.
 
 This looked tough. 
 
-My first idea was to fill up the matrix A(I,J), which holds the area values 
-spanning from height bars I to J, from the diagonal A[I,I] upwards.
+My first idea was to fill up the upper triangular matrix A(I,J), which holds 
+the area values spanning from the height bars from index I to J, from the 
+main diagonal A[I,I] upwards.
+
 This would use the recursion
 
   A(I, I) = h(I)
