@@ -5,19 +5,16 @@ main() ->
   {ok, [T]} = io:fread("", "~d"),
   L = read_list(T),
   lists:foreach(fun(N) ->
-    Palin = find_palin(N),
+    Palin = find_palin(N-1),
     io:format("~p~n", [Palin])
   end, L),
   true.
 
 
-find_palin(N) ->
-  find_palin(N-1, N).
-
-find_palin(X, N) ->
+find_palin(X) ->
   case palin(X) andalso prod(X) of
     false ->
-      find_palin(X-1, N);
+      find_palin(X-1);
     true ->
       X
   end.
