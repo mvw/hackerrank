@@ -59,4 +59,5 @@ left side to the right side and vice versa.
 So we could divide the problem into smaller instances, over the three parts, 
 find the maximum for each part and use these to find the maximum over all bars (conquer step).
 
-Of course we do this recursively. This results in O(N log N) many steps.
+Of course we do this recursively. This results in O(N log N) many steps, around 10^6, which was
+fast enough.
