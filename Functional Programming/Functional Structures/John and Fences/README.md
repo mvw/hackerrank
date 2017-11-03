@@ -30,13 +30,21 @@ and see what can be done here.
 I ended up with a decomposition into rectangles
 
 1x [1,6]
+
 2x [1,4] [6,6]
+
 3x [2,4] [6,6]
+
 4x [2,4] [6,6]
+
 5x [2,3] [6,6]
+
 6x [3,3] [6,6]
+
 7x [3,3] [6,6]
+
 8x [6,6]
+
 9x -
 
 for the sample. This should need H*(N/2) steps at most, with H up to 10^4, 
