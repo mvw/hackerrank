@@ -16,6 +16,7 @@ main diagonal A[I,I] upwards.
 This would use the recursion
 
   A(I, I) = h(I)
+
   A(I, J+1) = (J-I+1+1)/(J-I+1) min( A(I,J), (J-I+1) h(J+1) )
   
 which allows to calculate the values, just keeping two diagonals in memory
