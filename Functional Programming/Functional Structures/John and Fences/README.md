@@ -53,7 +53,7 @@ thus 5*10^8 steps at most. Not much better.
 The final solution was built on the idea that a minimal bar allows to split
 the set of bars into three parts. Left, middle and right:
 
-The middle minimal bar would prevent rectangles to further extend from the 
+The middle minimal bar acts as blocker and prevents higher rectangles to further extend from the 
 left side to the right side and vice versa. 
 
 So we could divide the problem into smaller instances, over the three parts, 
