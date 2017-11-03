@@ -1,3 +1,10 @@
+# Project Euler #3 Largest prime factor
+
+## Problem
+http://www.hackerrank.com/contests/projecteuler/challenges/euler003
+
+## Solution
+
 The basic idea here is to divide the original number
 
   N = p_1^e_1 p_2^e_2 ... p_k^e_k
