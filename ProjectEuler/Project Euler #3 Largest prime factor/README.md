@@ -22,4 +22,4 @@ To make the time limits it is necessary to stop the divisor trials if
 because then it is already clear that X can not be split in two factors
 and thus X must be prime.
 
-The code can be simplified it is a bit too careful.
+The code can be simplified, it is a bit too careful.
