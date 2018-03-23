@@ -8,7 +8,8 @@ Sort a list of long numbers, all in all up to a million digits might be used.
 ## Experience
 
 Erlang can deal with long numbers. 
-See [solution_slow.erl](https://github.com/mvw/hackerrank/blob/master/Algorithms/Sorting/Big%20Sorting/solution_slow.erl). 
+See [solution_slow.erl](https://github.com/mvw/hackerrank/blob/master/Algorithms/Sorting/Big%20Sorting/solution_slow.erl).
+
 But it turns out this approach is too slow to tackle all test cases.
 
 So I tried to use strings instead of numbers, which needs its
