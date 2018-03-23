@@ -21,10 +21,12 @@ main() ->
     io:format("~s~n", [I])
   end, S),
   T3 = erlang:timestamp(),
+
   M = 1000*1000,
-  io:format("read : ~p~n", [timer:now_diff(T1, T0)/M]),
-  io:format("sort : ~p~n", [timer:now_diff(T2, T1)/M]),
-  io:format("write: ~p~n", [timer:now_diff(T3, T2)/M]),
+  io:format("read : ~ps~n", [timer:now_diff(T1, T0)/M]),
+  io:format("sort : ~ps~n", [timer:now_diff(T2, T1)/M]),
+  io:format("write: ~ps~n", [timer:now_diff(T3, T2)/M]),
+  init:stop(),
   true.
 
 
@@ -59,4 +61,3 @@ read_list(N) ->
   Fmt = unicode:characters_to_list(lists:duplicate(N, "~s")),
   {ok, L} = io:fread("", Fmt),
   L.
-

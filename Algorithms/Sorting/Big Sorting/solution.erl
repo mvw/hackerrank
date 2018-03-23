@@ -51,4 +51,3 @@ read_list(N) ->
   Fmt = unicode:characters_to_list(lists:duplicate(N, "~s")),
   {ok, L} = io:fread("", Fmt),
   L.
-

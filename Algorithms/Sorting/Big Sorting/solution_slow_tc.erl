@@ -14,11 +14,14 @@ main() ->
     io:format("~p~n", [I])
   end, S),
   T3 = erlang:timestamp(),
+
   M = 1000*1000,
   io:format("read : ~p~n", [timer:now_diff(T1, T0)/M]),
   io:format("sort : ~p~n", [timer:now_diff(T2, T1)/M]),
   io:format("write: ~p~n", [timer:now_diff(T3, T2)/M]),
+  init:stop(),
   true.
+
 
 read_list(N) ->
   Fmt = unicode:characters_to_list(lists:duplicate(N, "~d")),
