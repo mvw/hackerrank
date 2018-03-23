@@ -29,9 +29,21 @@ E.g. for `h` we look at each horizontal line from the top line
 to the bottom line.
 
 For each line we start with the first four elements and then move the window 
-of width four one the right. We can do this until the fourth window
+of width four one to the right. We can do this until the fourth window
 element has moved beyond J=20.
 
+For `v` we can do it in a similar way.
+
+For `d1` and `d2` we might have traversed along each possible diagonal line.
+
+Instead I was lazy and e.g. for `d1` I just moved each "\\" arrangement from left to right.
+And then do it one line lower. So the long diagonals are broken into segments of four
+elements. 
+
+For `d2` I do the same with a "/" arrangement.
+
+For both line types we do not moving window, so we end up with more multiplications 
+than following the diagonals would have needed.
 
 ## Experience
 
