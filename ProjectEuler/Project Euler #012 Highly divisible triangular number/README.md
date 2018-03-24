@@ -25,6 +25,15 @@ This gives prod_i (1+e_i) as number of divisors of x.
 We sort the N_i in ascending order, so we can grow the triangular numbers while 
 growing the map of discovered prime numbers.
 
+In `divisors/5` we determine the exponents by going through all prime factors which are not greater than the
+triangular number candidate. For each prime factor we try to divide away as many instances
+as possible, growing a list `LP` of prime divisors.
+
+In `nd` we recover the exponents from `LP`, and use them to calculate the number of divisors.
+
+For the primes we use a map k -> p_k, we start with {1->2, 2->3} to reach the odd primes and 
+extend this map prime per prime on demand.
+
 
 ## Experience
 
