@@ -21,11 +21,11 @@ from S_i, just adding the prime numbers between N_i and N_{i+1}.
 
 ### Finding prime numbers
 
-primes(N) builds a map k -> P_k for all prime numbers not greater than N:
+`primes(N)` builds a map k -> P_k for all prime numbers not greater than N:
 
 It handles the first few cases until we need only to check odd numbers.
 
-primes(X, N, Primes) extends the prime number map Primes with all primes
+`primes(X, N, Primes)` extends the prime number map Primes with all primes
 not greater than N with first candidate X, progressing in steps of two.
 
 We check X if it is a prime by using all known primes as divisors, stopping
