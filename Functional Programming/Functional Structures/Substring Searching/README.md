@@ -25,13 +25,14 @@ I was a bit surprised, that both did not get the full score of 50 points,
 failing on the last test cases, which are usually larger problem instances.
 
 Then I implemented KMP from pseudo code found in the German language
-Wikipedia article. 
+Wikipedia [article](https://de.wikipedia.org/wiki/Knuth-Morris-Pratt-Algorithmus#Implementierung)
 
-There might be more elegant version, this is just a quick port of the 
+There might be more elegant versions, this is just a quick port of the 
 imperative pseudo code.
 
-This solution passed all tests. So I took a time to study the
-other Erlang entries.
+This solution passed all tests. 
+
+Afterwards I took a look at other Erlang entries.
 
 One was amusing, because it had to resort to some pre calculated
 result.
