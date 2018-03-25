@@ -16,7 +16,7 @@ The problem refers to the Knuth-Morris-Pratt algorithm.
 It has a complexity O(m+n).
 
 ## Experience
-Somewhat lazy to start implementing KMP I first tried two make use of
+Somewhat lazy to start implementing the KMP algorithm I first tried to make use of
 two Erlang library functions:
 - `string:find(Text, Pat)` (score 27.48)
 - `re:match(Text, Pat)` (score 18.47)
