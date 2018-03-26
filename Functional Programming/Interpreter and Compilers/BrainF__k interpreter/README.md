@@ -83,18 +83,9 @@ When I ran it, I got only a couple of debug outputs, instead of the many expecte
 This made me finally realize that when forwarding or backwarding to the other square bracket, it was
 not correct to take the first one. I had to pick the partner bracket of the proper depth level.
 
-Now the description of the BrainFuck commands
-
-
-
-
-### Sorting
-[Graham Scan](http://en.wikipedia.org/wiki/Graham_scan).
-
-## Where the effort went
-Getting the signs right, to get correct angles for all quadrants.
-
 ## After the task
 As usual I had a look at the other Erlang solutions. I wanted to know how other folks approached this task.
+
 Quite surprising: The solution by tamarit27 was plagiarized FIVE times.
+
 Ouch!
