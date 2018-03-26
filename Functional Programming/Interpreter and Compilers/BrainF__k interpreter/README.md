@@ -83,6 +83,24 @@ When I ran it, I got only a couple of debug outputs, instead of the many expecte
 This made me finally realize that when forwarding or backwarding to the other square bracket, it was
 not correct to take the first one. I had to pick the partner bracket of the proper depth level.
 
+I should have read the spec more carefully. The underestimated word was "matching".
+
+## Round 3
+Later that day I could add the missing code. I decided not to scan back and forth, while keeping the depth levels
+of open and closed square brackets. 
+
+Instead I built the needed data structures during the first read of the source file.
+
+The example above shows the `Forward` and `Back`maps, e.g. a `[` at offset 3 will match a `]` at offset 12.
+
+This version of the solution tackled all test cases except one.
+
+## Round 4
+I had a look at the failed test case and it seemed that I stopped the program one step too late, in case it
+executed too many instructions.
+
+I corrected the guard clause for this case and the resulting solution was able to solve all test cases.
+
 ## After the task
 As usual I had a look at the other Erlang solutions. I wanted to know how other folks approached this task.
 
