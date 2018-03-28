@@ -109,6 +109,6 @@ I corrected the guard clause for this case and the resulting solution was able t
 ## After the task
 As usual I had a look at the other Erlang solutions. I wanted to know how other folks approached this task.
 
-Quite surprising: The solution by tamarit27 was plagiarized FIVE times.
+Quite surprising: The solution by [tamarit27](https://www.hackerrank.com/tamarit27) was plagiarized FIVE times. :astonished:
 
 Ouch!
