@@ -43,22 +43,22 @@ understand what was going on.
 I also checked my code several times. No luck.
 
 So I turned to BrainFuck samples from the web.
-This made me understand that the language specification had a few issues, where the specs did
-still leave open some freedom for implementers,
+This made me understand that the language specification had a few issues, where the specs were
+not specific enough, leaving some freedom to implementers,
 e.g. see [Portability issues](https://en.wikipedia.org/wiki/Brainfuck#Portability_issues).
 These were my primary suspects for bugs. 
 
-After some sleep, I continued with the task and the debug output started to get useful. 
+After some sleep, I continued with the task and the debug output started to become useful. 
 Here is an example of the final version:
 
 ```asm
-sp
+sp                                                 output
 PROCESS TIME OUT. KILLED!!!
 
-Count 100000: Line=10 IP=15 C=] IPMax=15 DP=0
-Input=[]
-Prog=
-001:001: ++
+Count 100000: Line=10 IP=15 C=] IPMax=15 DP=0      state
+Input=[]                                           remaining input
+Prog=                                              program listing
+001:001: ++                                        source line number, instruction address, instructions
 002:003: [
 003:004: >
 004:005: ,
@@ -68,10 +68,10 @@ Prog=
 008:011: -
 009:012: ]
 010:013: +[]
-Forward=#{3 => 12,14 => 15}
-Back=#{12 => 3,15 => 14}
-Mem=
-000:001 001:112 
+Forward=#{3 => 12,14 => 15}                        forward map
+Back=#{12 => 3,15 => 14}                           back map
+Mem=                                               memory dump
+000:001 001:112                                    data address, byte value
 ```
 
 It turned out that it probably were not the holes in the spec, but the more complicated `[` and `]` commands had
