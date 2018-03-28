@@ -1,4 +1,4 @@
 # INDEX
 
 ## B
-* Brainfuck, [1](./Functional%20Programming/Interpreter%20and%20Compilers/BrainF__k%20interpreter)
+* Brainfuck, [BrainF__k interpreter](./Functional%20Programming/Interpreter%20and%20Compilers/BrainF__k%20interpreter)
