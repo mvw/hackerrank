@@ -86,7 +86,7 @@ not correct to take the first one. I had to pick the partner bracket of the prop
 I should have read the spec more carefully. The underestimated word was "matching".
 
 ## Round 3
-Later that day I could add the missing code. I decided not to scan back and forth, while keeping the depth levels
+Later that day I could add the missing code. I decided not to scan back and forth while keeping the depth levels
 of open and closed square brackets. 
 
 Instead I built the needed data structures during the first read of the source file.
