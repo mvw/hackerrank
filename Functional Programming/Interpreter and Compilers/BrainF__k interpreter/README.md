@@ -91,6 +91,11 @@ of open and closed square brackets.
 
 Instead I built the needed data structures during the first read of the source file.
 
+```erlang
+Forward=#{3 => 12,14 => 15}
+Back=#{12 => 3,15 => 14}
+```
+
 The example above shows the `Forward` and `Back`maps, e.g. a `[` at offset 3 will match a `]` at offset 12.
 
 This version of the solution tackled all test cases except one.
