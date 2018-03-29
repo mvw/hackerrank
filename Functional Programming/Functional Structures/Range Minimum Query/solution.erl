@@ -48,7 +48,7 @@ k(K, TwoK, W) ->
 rmq(A) ->
   N = maps:size(A),
   M0 = rmq0(N, A),
-  rmq(N, A, M0).
+  rmq(N, M0).
 
 % initialize for intervals of length 2^0
 rmq0(N, A) ->
@@ -64,29 +64,29 @@ rmq_0(I, N, A, M) ->
   rmq_0(I+1, N, A, M2).
 
 % calculate bigger intervals
-rmq(N, A, M) ->
+rmq(N, M) ->
   J = 1,
   TwoJ = 2,
-  rmq(J, TwoJ, N, A, M).
+  rmq(J, TwoJ, N, M).
 
-rmq(_J, TwoJ, N, _A, M) when TwoJ > N ->
+rmq(_J, TwoJ, N, M) when TwoJ > N ->
   M;
-rmq(J, TwoJ, N, A, M) ->
+rmq(J, TwoJ, N, M) ->
   I = 0,
   IMax = I+TwoJ-1,
-  M2 = rmq(I, IMax, J, TwoJ, N, A, M),
-  rmq(J+1, 2*TwoJ, N, A, M2).
+  M2 = rmq(I, IMax, J, TwoJ, N, M),
+  rmq(J+1, 2*TwoJ, N, M2).
 
-rmq(_I, IMax, _J, _TwoJ, N, _A, M) when IMax =:= N ->
+rmq(_I, IMax, _J, _TwoJ, N, M) when IMax =:= N ->
   M;
-rmq(I, IMax, J, TwoJ, N, A, M) ->
+rmq(I, IMax, J, TwoJ, N, M) ->
   JM = J-1,
   I2 = I+(1 bsl JM),
   A1 = maps:get({I, JM}, M),
   A2 = maps:get({I2, JM}, M),
   MIJ = min(A1, A2),
   M2 = maps:put({I, J}, MIJ, M),
-  rmq(I+1, IMax+1, J, TwoJ, N, A, M2).
+  rmq(I+1, IMax+1, J, TwoJ, N, M2).
 
 
 % array map starting at index 0
