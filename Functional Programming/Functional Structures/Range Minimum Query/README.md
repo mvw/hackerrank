@@ -9,7 +9,6 @@ of indices of an array A[0]..A[N-1].
 In this case determing the minimum over the subarray.
 
 ## Solution
-
 I started reading these articles:
 * [Wikipedia: Range minimum query](https://en.wikipedia.org/wiki/Range_minimum_query) - gives an overview and has good references
 * [Stanford: CS166](web.stanford.edu/class/archive/cs/cs166/cs166.1146/lectures/00/Small00.pdf) - this explains the ideas behind several RMQ algorithms
@@ -18,3 +17,6 @@ I started reading these articles:
 
 ## Experience
 Warm-up.
+
+## Keywords
+array, data structure, RMQ, sparse table
