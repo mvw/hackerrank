@@ -33,4 +33,4 @@ of two numbers to addition of the exponents.
 Alas this solution also passes only test cases #00 to #10
 
 ## Keywords
-array, data structure, Euclid's algorithm, lcm, RQM
+array, data structure, Euclid's algorithm, lcm
