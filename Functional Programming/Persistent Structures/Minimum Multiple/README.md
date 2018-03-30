@@ -30,7 +30,7 @@ which we can represent by the exponents of the 25 prime numbers from that interv
 Then lcm calculation boils down to picking the max of exponents and multiplication
 of two numbers to addition of the exponents.
 
-Alas this solution also passes test cases #00 to #10
+Alas this solution also passes only test cases #00 to #10
 
 ## Keywords
 array, data structure, Euclid's algorithm, lcm, RQM
