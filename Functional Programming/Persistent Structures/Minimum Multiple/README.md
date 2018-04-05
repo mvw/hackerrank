@@ -3,9 +3,10 @@
 ## Problem
 https://www.hackerrank.com/challenges/minimum-multiple/problem
 
-This is about 
-- efficient lcm queries for a continuous range [L..R] of indices of an array A[0]..A[N-1]
-- efficient updates of the array, an array element has to be multiplied by a factor
+This problem is about
+- efficient [lcm](https://en.wikipedia.org/wiki/Least_common_multiple) queries for a
+  continuous range [L..R] of indices of an array A[0]..A[N-1]
+- efficient updates of the array, where an array element has to be multiplied by a factor
 
 ## Solution
 This task buggered me for quite some months. See below how I finally solved it.
@@ -19,24 +20,48 @@ lcm(a, b) = |a b| / gcd(a,b) = (|a| / gcd(a,b)) |b|
 ```
 and the gcd by Euclid's algorithm.
 
-It manages to pass test cases #00 to #10, still ten more to go.
+It managed to pass test cases #00 to #10, still ten more to go.
 
 ### Version 2
 Another way to compute the lcm is to use the prime factorization of a whole number.
 
-Initial array element values and factors are limited to numbers from the set 1..100,
-which we can represent by the exponents of the 25 prime numbers from that interval.
+Usually this approach is just of theoretical interest, however the initial array 
+element values and the update factors are limited to numbers from the set 1..100,
+which looked suspicious.
+
+We can represent natural numbers by the exponents of the 25 prime numbers 
+from that interval:
+```erlang
+x = prod_i=1^25 p_i^e_i = (e_1, .., e_25) = [e_25 -- e_d]
+```
+where we provide the 25-tuple of exponents or use a reverse list without 
+zero-valued higher order exponents, not unlike the way we represent decimals:
+```erlang
+1 = (0, .., 0) = []
+2 = (1, 0, .., 0) = [1]
+3 = (0, 1, .., 0) = [01]
+4 = (2, 0, .., 0) = [2]
+5 = (0, 0, 1, 0, .., 0) = [001]
+6 = (1, 1, 0, .., 0) = [11]
+7 = (0, 0, 0, 1, 0, .., 0) = [0001]
+8 = (3, 0, .., 0) = [3]
+9 = (0, 2, 0, .., 0) = [02]
+10 = (1, 0, 1, 0, .., 0) = [101]
+```
 
 Then 
-- lcm calculation boils down to picking the max of exponents and 
-- multiplication of two numbers to addition of the exponents.
+- lcm calculation boils down to picking the maximum of exponents and 
+- multiplication of two numbers boild donw to addition of the exponents.
 
-So no new prime factors are introduced by these two operations.
+This means also that no new prime factors are introduced by these two operations,
+we can stay in the 25-vector representation.
 
 Alas this solution also passes only test cases #00 to #10
 
 ### Version 3
-Revisiting unsolved problems, I came along the "Range Minimum Query" problem.
+Revisiting unsolved problems, I came along the 
+[Range Minimum Query](https://github.com/mvw/hackerrank/tree/master/Functional%20Programming/Functional%20Structures/Range%20Minimum%20Query)
+problem.
 
 It dawned to me that "Minimum Multiple" can be formulated as Range Maximum Query problem.
 
