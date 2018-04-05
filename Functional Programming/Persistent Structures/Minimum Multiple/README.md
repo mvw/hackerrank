@@ -68,13 +68,50 @@ It dawned to me that "Minimum Multiple" can be formulated as Range Maximum Query
 To get more familiar with RMQ data structures I solved "Range Minimum Query" first.
 Of the various data structures I chose the "Sparse Table" which was good enough to tackle the problem.
 
-So this version uses a "Sparse Table". It needs O(n log n) space and allows for O(1) lookup and is not
-too complicated. 
+It needs O(n log n) space and allows for O(1) lookup and is not too complicated. 
 
 The trick is storing 2^k long subranges (of O(n log n) many) and reconstructing 
 every subrange (of O(n^2) many) by using two of the precalculated subranges only.
 
 The flip side is that the "Minimum Multiple" problem involves changes to the matrix.
+
+For the example in data
+```erlang
+5
+2 5 6 1 9
+7
+Q 0 4
+U 1 2
+Q 0 2
+Q 3 4
+Q 2 4
+U 3 8
+Q 2 3
+```
+
+we get this (I rearranged the original output for readability):
+```erlang
+RMQ=#{{0,0} => [1],       {0,1} => [1,0,1],   {0,2} => [1,1,1],
+      {1,0} => [0,0,1],   {1,1} => [1,1,1],   {1,2} => [1,2,1],
+      {2,0} => [1,1],     {2,1} => [1,1],
+      {3,0} => [],        {3,1} => [0,2],
+      {4,0} => [0,2]}
+90
+RMQ=#{{0,0} => [1],       {0,1} => [1,0,1],   {0,2} => [1,1,1],
+      {1,0} => [1,0,1],   {1,1} => [1,1,1],   {1,2} => [1,2,1],
+      {2,0} => [1,1],     {2,1} => [1,1],
+      {3,0} => [],        {3,1} => [0,2],
+      {4,0} => [0,2]}
+30
+9
+18
+RMQ=#{{0,0} => [1],       {0,1} => [1,0,1],   {0,2} => [3,1,1],
+      {1,0} => [1,0,1],   {1,1} => [1,1,1],   {1,2} => [3,2,1],
+      {2,0} => [1,1],     {2,1} => [3,1],
+      {3,0} => [3],       {3,1} => [3,2],
+      {4,0} => [0,2]}
+24
+```
 
 Recalculating the whole sparse table every time turned out to be too slow. 
 The test cases seemed to feature many updates, perhaps half of the ops. 
