@@ -75,7 +75,7 @@ every subrange (of O(n^2) many) by using two of the precalculated subranges only
 
 The flip side is that the "Minimum Multiple" problem involves changes to the matrix.
 
-For the example in data
+For the example input data
 ```erlang
 5
 2 5 6 1 9
@@ -113,8 +113,9 @@ RMQ=#{{0,0} => [1],       {0,1} => [1,0,1],   {0,2} => [3,1,1],
 24
 ```
 
-Recalculating the whole sparse table every time turned out to be too slow. 
-The test cases seemed to feature many updates, perhaps half of the ops. 
+Recalculating the whole sparse table every time turned out to be too slow.
+
+The test cases seemed to feature many updates, perhaps half of the operations. 
 So getting efficient here as well is important.
 
 This solution passes only test cases #00 to #06.
@@ -125,18 +126,59 @@ So I tried to come up with my own scheme. This improved my understanding of the 
 
 Alas my analysis seemed to indicate that updating only those sparse table elements which need an update after
 modification of an array element (first column of the sparse table) will involve still too many elements.
+
 Worst case would be modifying a middle array element and the update would spread considerably, as this element is
 part of a lot of interval ranges. 
 This might still be O(n log n) per update, for O(n) updates. 
 
-While it tempted me to finish that road, I finally broke up with the sparse table.
+While it tempted me to finish this road, I finally broke up with the sparse table.
 
 It seemed to me that the segment tree might be good enough:
+
 Query is only O(log n) instead of O(1), but update is O(log n) as well and far simpler than what a minimal
 update of the sparse table would be (if I am not wrong).
 
 The trick here is how to split the full interval into interval halves and how to combine these intervals into
 any possible subrange.
+
+The example gives:
+```erlang
+RMQ=#{root => {0,4},
+      {0,4} => {none,{0,2},{3,4},[1,2,1]},
+      {0,2} => {{0,4},{0,1},2,[1,1,1]},
+      {3,4} => {{0,4},3,4,[0,2]},
+      {0,1} => {{0,2},0,1,[1,0,1]},
+      0 => {{0,1},none,none,[1]},
+      1 => {{0,1},none,none,[0,0,1]},
+      2 => {{0,2},none,none,[1,1]},
+      3 => {{3,4},none,none,[]},
+      4 => {{3,4},none,none,[0,2]}},
+90
+RMQ=#{root => {0,4},
+      {0,4} => {none,{0,2},{3,4},[1,2,1]},
+      {0,2} => {{0,4},{0,1},2,[1,1,1]},
+      {3,4} => {{0,4},3,4,[0,2]},
+      {0,1} => {{0,2},0,1,[1,0,1]},
+      0 => {{0,1},none,none,[1]},
+      1 => {{0,1},none,none,[1,0,1]},
+      2 => {{0,2},none,none,[1,1]},
+      3 => {{3,4},none,none,[]},
+      4 => {{3,4},none,none,[0,2]}},
+30
+9
+18
+RMQ=#{root => {0,4},
+      {0,4} => {none,{0,2},{3,4},[3,2,1]},
+      {0,2} => {{0,4},{0,1},2,[1,1,1]},
+      {3,4} => {{0,4},3,4,[3,2]},
+      {0,1} => {{0,2},0,1,[1,0,1]},
+      0 => {{0,1},none,none,[1]},
+      1 => {{0,1},none,none,[1,0,1]},
+      2 => {{0,2},none,none,[1,1]},
+      3 => {{3,4},none,none,[3]},
+      4 => {{3,4},none,none,[0,2]}},
+24
+```
 
 This solution finally passed all test case, thus #00 to #20.
 
@@ -145,4 +187,4 @@ We might drop the lcm/factor implementations using the prime exponent vectors an
 calculation from version 1. But I was too lazy to try this out.
 
 ## Keywords
-array, data structure, Euclid's algorithm, lcm
+array, data structure, Euclid's algorithm, lcm, segment tree
