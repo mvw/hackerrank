@@ -6,7 +6,6 @@ http://www.hackerrank.com/challenges/crush/problem
 Apply m modifications to an array, each a value change over a subrange of the array.
 
 ## Experience
-
 I first ran against the wall, trying a direct implementation which is only O(m n), 
 which is around 10^12 operations for the large m and n instances. 
 
@@ -22,7 +21,6 @@ which is O(m log m).
 
 
 ## Solution
-
 The key idea is that it is more efficient to work on the derivative, needing only O(m) operations
 and then integrate the derivative into the modified function, keeping track of the maximum.
 
