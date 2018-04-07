@@ -118,7 +118,7 @@ day(Y, M, D) ->
   DY + day_m(M, LeapYear) + Days.
 ```
 
-Comparing the above with Gauss formula for (Y, 1, 1)
+Comparing the above with Gauss formula for the weekday of (Y, 1, 1)
 
 w = (1 + 5 (A-1) mod 4 + 4 ( (A-1) mod 100) + 6 ( (A-1) mod 400)) mod 7
 
