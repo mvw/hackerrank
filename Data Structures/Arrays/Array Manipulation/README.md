@@ -1,7 +1,7 @@
 # Array Manipulation
 
 ## Problem
-https://www.hackerrank.com/challenges/crush/problem
+http://www.hackerrank.com/challenges/crush/problem
 
 Apply m modifications to an array, each a value change over a subrange of the array.
 
@@ -30,7 +30,7 @@ See [my posting](https://www.hackerrank.com/challenges/crush/forum/comments/3953
 
 
 ## Related to
-* [Weekly Challenges - Week 4 > Array Manipulation](https://www.hackerrank.com/contests/w4/challenges/crush)
+* [Weekly Challenges - Week 4 > Array Manipulation](http://www.hackerrank.com/contests/w4/challenges/crush)
 
 
 
