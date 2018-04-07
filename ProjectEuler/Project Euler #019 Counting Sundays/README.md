@@ -50,6 +50,81 @@ fom_sundays(Y1, M1, 1, Y2, M2, 1) ->
 fom_sundays(Y1, M1, Y2, M2).
 ```
 
+The main clause of the counting is:
+```erlang
+fom_sundays(Y1, M1, Y2, M2, N) ->
+  Day = day(Y1, M1, 1),
+  case (Day rem 7) =:= 6 of
+    true ->
+      N2 = N+1;
+    false ->
+      N2 = N
+  end,
+fom_sundays(Y1, M1+1, Y2, M2, N2).
+```
+
+Where day/3 returns the number of days since (1900, 1, 1). 
+
+The leap year rules have been encoded into
+```erlang
+% leap years from 1900 until Y (if all years are full)
+leap_years(Y) ->
+  L1 = (Y div 4)-474,
+  L2 = (Y div 100)-18,
+  L3 = (Y div 400)-4,
+  L1-L2+L3.
+```
+L1 gives the number of years divisible by 4 from 1900 to Y.
+
+L2 gives the number of years divisible by 100 from 1900 to Y.
+
+L3 gives the number of years divisible by 400 from 1900 to Y.
+
+This suffices to calculate the number of days on the years level.
+
+As it is O(1), we stay within the O(10^6) estimation.
+
+However we also consider partial years via the month part of the given dates.
+So we have to take care of the different month lengths and if
+we have a leap day or not.
+
+I decided to code the different months as Erlang clauses with a little recursion
+to spare me summing up the different length of months:
+```erlang
+day_m(1, _LeapYear) -> 0;
+day_m(2, LeapYear) -> day_m(1, LeapYear)+31;
+day_m(3, LeapYear) -> day_m(2, LeapYear)+28+LeapYear;
+day_m(4, LeapYear) -> day_m(3, LeapYear)+31;
+day_m(5, LeapYear) -> day_m(4, LeapYear)+30;
+day_m(6, LeapYear) -> day_m(5, LeapYear)+31;
+day_m(7, LeapYear) -> day_m(6, LeapYear)+30;
+day_m(8, LeapYear) -> day_m(7, LeapYear)+31;
+day_m(9, LeapYear) -> day_m(8, LeapYear)+31;
+day_m(10, LeapYear) -> day_m(9, LeapYear)+30;
+day_m(11, LeapYear) -> day_m(10, LeapYear)+31;
+day_m(12, LeapYear) -> day_m(11, LeapYear)+30.
+```
+
+Both parts are combined by this code:
+```erlang
+% number of days since (Y, 1, 1)
+day(Y, M, D) ->
+  Years = Y-1900,
+  Days = D-1,
+  D1 = Years*365,
+  LeapYears = leap_years(Y-1),
+  DY = D1 + LeapYears,
+  LeapYear = leap_years(Y)-LeapYears,
+  DY + day_m(M, LeapYear) + Days.
+```
+
+Comparing the above with Gauss formula for (Y, 1, 1)
+
+w = (1 + 5 (A-1) mod 4 + 4 ( (A-1) mod 100) + 6 ( (A-1) mod 400)) mod 7
+
+we see a little resemblence.
+
+
 ## Experience
 Now the easy Euler problems get harder.
 
