@@ -120,10 +120,9 @@ day(Y, M, D) ->
 
 Comparing the above with Gauss formula for the weekday of (Y, 1, 1)
 
-w = (1 + 5 (A-1) mod 4 + 4 ( (A-1) mod 100) + 6 ( (A-1) mod 400)) mod 7
+w = (1 + 5 (Y-1) mod 4 + 4 ( (Y-1) mod 100) + 6 ( (Y-1) mod 400)) mod 7
 
 we see a little resemblence.
-
 
 ## Experience
 Now the easy Euler problems get harder.
