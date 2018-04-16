@@ -95,9 +95,9 @@ The two pitfalls are:
 * implementing operator precedence
 
 Solutions:
-* For the first case Wirth shows how to express left recursion by repetition, e.g. using
+* for the first case Wirth shows how to express left recursion by repetition, e.g. using
   A -> b A^* instead
-* For the second case one splits the grammar rule into several rules, from lower to higher 
+* for the second case one splits the grammar rule into several rules, from lower to higher 
   precedence
 
 We encounter such a production here:
