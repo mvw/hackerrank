@@ -156,7 +156,7 @@ parse(Tokens) ->
 %   S -> x.. | S ; S | if.. | while..
 % by
 %   S' -> x.. | if.. | while..
-%   S -> S' (; S)^*
+%   S -> S' (; S')^*
 
 % S production rule
 s(Tokens) ->
