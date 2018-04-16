@@ -65,6 +65,10 @@ Tokens=[{var,"a",1,0},
         {curly_close,12,4}]
 ```
 
+The last two numbers are line (starting at line 1) and column (starting at column 0),
+which are useful in error messages.
+
+
 ### Pass 2: Syntactic Analysis
 To tackle this part I had a look at my Kindle copy of 
 
