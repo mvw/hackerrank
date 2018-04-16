@@ -117,7 +117,7 @@ We encounter such a production here:
 ```
 
 Getting the repetition right took me some time, maybe because I had to express it
-using recursion again. :) Here is how it turned out:
+using recursion again. :-) Here is how it turned out:
 
 ```erlang
 % S production rule
