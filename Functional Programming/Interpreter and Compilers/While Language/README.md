@@ -135,7 +135,7 @@ s_repeat(Tokens, Tree) ->
 
 The correct split into `s/1` and `s_repeat/2` I got from [this code](http://www.cs.dartmouth.edu/~mckeeman/cs118/languages/erlang/exprParser.html).
 
-For the operator precedence I used the split into `expression`, `term` and `factor` 
+For the operator precedence I used the usual split into `expression`, `term` and `factor` 
 production rules, e.g. here:
 ```erlang
 %   a -> a_term (+ a_term | - a_term)^*
