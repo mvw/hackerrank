@@ -106,7 +106,7 @@ We encounter such a production here:
 %   S -> x.. | S ; S | if.. | while..
 % by
 %   S' -> x.. | if.. | while..
-%   S -> S' (; S)^*
+%   S -> S' (; S')^*
 ```
 Getting the repetition right took me some time, maybe because I had to express it
 using recursion again. Here is how it turned out:
