@@ -8,8 +8,9 @@ I frist wrote the tokenizer, then a recursive descent parser, finally the evalua
 routine.
 
 ### Pass 1: Lexical Analysis
+Have a look at the code. 
 
-Have a look at the code. It turned out useful to have a list of all tokens.
+It turned out useful for the next part to have a list of all introduced tokens.
 
 Testcase 1
 
@@ -27,7 +28,7 @@ else {
     max := a
     }
 ```
-turns into
+then turns into
 ```erlang
 Tokens=[{var,"a",1,0},
         {op_assign,1,2},
@@ -68,6 +69,9 @@ Tokens=[{var,"a",1,0},
 The last two numbers are line (starting at line 1) and column (starting at column 0),
 which are useful in error messages.
 
+I would have prefered to use `if` instead of `stmt_it`, but it turned out that
+there are reserved words in Erlang, which can not be used for atoms, only
+indirectly by quoting them, e.g. `'if'`, which I liked less.
 
 ### Pass 2: Syntactic Analysis
 To tackle this part I had a look at my Kindle copy of 
@@ -192,7 +196,6 @@ Tree={semicolon,
 
 ### Pass 3: Evaluation
 Have a look at the code. It is straight forward.
-
 
 ## After the task
 
