@@ -28,7 +28,9 @@ else {
     max := a
     }
 ```
+
 then turns into
+
 ```erlang
 Tokens=[{var,"a",1,0},
         {op_assign,1,2},
@@ -93,9 +95,9 @@ This I wanted to try out for this task in Erlang as well.
 One can mostly translate the given grammar into a recursive descent parser.
 
 The two pitfalls are:
-* recursive production rules, e.g. A -> A a | b, which would introduce ambiguity into 
-  the recognition process (there would be accepted words by different rules with the
-  same first symbol)
+* recursive production rules, e.g. A -> A a | b, which would introduce ambiguity (non-determinism)
+  into the recognition process (there would be words accepted by different rules with a
+  common first symbol)
 * implementing operator precedence
 
 Solutions:
@@ -105,6 +107,7 @@ Solutions:
   precedence
 
 We encounter such a production here:
+
 ```erlang
 % we implement the production
 %   S -> x.. | S ; S | if.. | while..
@@ -112,8 +115,9 @@ We encounter such a production here:
 %   S' -> x.. | if.. | while..
 %   S -> S' (; S')^*
 ```
+
 Getting the repetition right took me some time, maybe because I had to express it
-using recursion again. Here is how it turned out:
+using recursion again. :) Here is how it turned out:
 
 ```erlang
 % S production rule
@@ -167,7 +171,7 @@ while ( cur > 1 )
 cur := 0
 ```
 
-gives the syntax tree
+then gives the syntax tree
 
 ```erlang
 Tree={semicolon,
@@ -198,7 +202,6 @@ Tree={semicolon,
 Have a look at the code. It is straight forward.
 
 ## After the task
-
 The only other accepted Erlang solution is by [tamarit27](https://www.hackerrank.com/tamarit27).
 
 He seems to have used the [yecc](http://erlang.org/doc/man/yecc.html) parser generator.
