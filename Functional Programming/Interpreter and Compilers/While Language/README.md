@@ -137,6 +137,7 @@ The correct split into `s/1` and `s_repeat/2` I got from [this code](http://www.
 
 For the operator precedence I used the usual split into `expression`, `term` and `factor` 
 production rules, e.g. here:
+
 ```erlang
 %   a -> a_term (+ a_term | - a_term)^*
 %   a_term -> a_factor (* a_factor | / a_factor)^*
