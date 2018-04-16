@@ -4,8 +4,12 @@
 https://www.hackerrank.com/challenges/while-language-fp/problem
 
 ## Solution
+I frist wrote the tokenizer, then a recursive descent parser, finally the evaluation
+routine.
 
 ### Pass 1: Lexical Analysis
+
+Have a look at the code. It turned out useful to have a list of all tokens.
 
 Testcase 1
 
@@ -62,8 +66,80 @@ Tokens=[{var,"a",1,0},
 ```
 
 ### Pass 2: Syntactic Analysis
+To tackle this part I had a look at my Kindle copy of 
 
-Test case 0 
+* Niklaus Wirth: *Grundlagen und Techniken des Compilerbaus*, 3rd edition, 2011
+
+which for some reason is not offered anymore by Amazon. Strange. 
+
+The first few chapters have nice examples of grammars and chapter 4.1 describes
+how to write a recursive descent parser. 
+
+I probably saw this technique first in Bjarne Stroustrup's first book on C++,
+where he featured such a parser for a calculator.
+The striking feature was how the structure of the parser mirrored the structure
+of the grammar.
+
+This I wanted to try out for this task in Erlang as well.
+
+One can mostly translate the given grammar into a recursive descent parser.
+
+The two pitfalls are:
+* recursive production rules, e.g. A -> A a | b, which would introduce ambiguity into 
+  the recognition process (there would be accepted words by different rules with the
+  same first symbol)
+* implementing operator precedence
+
+Solutions:
+* For the first case Wirth shows how to express left recursion by repetition, e.g. using
+  A -> b A^* instead
+* For the second case one splits the grammar rule into several rules, from lower to higher 
+  precedence
+
+We encounter such a production here:
+```erlang
+% we implement the production
+%   S -> x.. | S ; S | if.. | while..
+% by
+%   S' -> x.. | if.. | while..
+%   S -> S' (; S)^*
+```
+Getting the repetition right took me some time, maybe because I had to express it
+using recursion again. Here is how it turned out:
+
+```erlang
+% S production rule
+s(Tokens) ->
+  case s_prime(Tokens) of
+    error -> 
+      error;
+    {Tokens2, Tree} ->
+      s_repeat(Tokens2, Tree)
+  end.
+
+s_repeat([{semicolon, _Line, _Col}|Tokens], Tree) ->
+  case s_prime(Tokens) of
+    error ->
+      error;
+    {Tokens2, Tree2} ->
+      Tree3 = tree(semicolon, Tree, Tree2),
+      s_repeat(Tokens2, Tree3)
+  end;
+s_repeat(Tokens, Tree) ->
+  {Tokens, Tree}.
+```
+
+The correct split into `s/1` and `s_repeat/2` I got from [this code](http://www.cs.dartmouth.edu/~mckeeman/cs118/languages/erlang/exprParser.html).
+
+For the operator precedence I use the split into expression, term and factor, e.g.
+```erlang
+%   a -> a_term (+ a_term | - a_term)^*
+%   a_term -> a_factor (* a_factor | / a_factor)^*
+%   a_factor -> x | n | ( a )
+```
+
+Testcase 0 
+
 ```go
 fact := 1 ;
 val := 10000 ;
@@ -81,7 +157,7 @@ while ( cur > 1 )
 cur := 0
 ```
 
-gives
+gives the syntax tree
 
 ```erlang
 Tree={semicolon,
@@ -109,3 +185,18 @@ Tree={semicolon,
 ```
 
 ### Pass 3: Evaluation
+Have a look at the code. It is straight forward.
+
+
+## After the task
+
+The only other accepted Erlang solution is by [tamarit27](https://www.hackerrank.com/tamarit27).
+
+He seems to have used the [yecc](http://erlang.org/doc/man/yecc.html) parser generator.
+
+I have played with lex and yacc and ANTLR, but did not get really warm with those.
+Perhaps if the grammar has to be developed too, it makes sense to invest the time to
+get fluent with them.
+
+## Keywords
+compiler, interpreter, recursive descent parser
