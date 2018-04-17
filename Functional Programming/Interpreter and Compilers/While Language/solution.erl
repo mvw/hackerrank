@@ -483,6 +483,8 @@ reduce_token({TokenType, Line, Col}) ->
 %   {op_a, Op, Line, Col}  Op = op_add | op_sub | op_mult | op_div
 %   {op_b, Op, Line, Col}  Op = op_and | op_or
 %   {op_r, Op, Line, Col}  Op = op_gt | op_lt
+%   {var, Name, Line, Col}
+%   {num, Number, Line, Col}
 %   {paren_open, Line, Col}
 %   {paren_close, Line, Col}
 %   {semicolon, Line, Col}
