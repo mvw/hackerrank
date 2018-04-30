@@ -12,7 +12,7 @@ Have a look at the code.
 
 It turned out useful for the next part to have a list of all introduced tokens.
 
-Testcase 1
+Example: Testcase 1
 
 ```go
 a := 10 ;
@@ -174,7 +174,29 @@ into `expression`, `term` and `factor` production rules, e.g. here:
 %   a_factor -> x | n | ( a )
 ```
 
-Testcase 0 
+During parsing we shrink the list of tokens and grow a syntax tree.
+
+```erlang
+% List of nodes:
+%   {semicolon, TreeS1, TreeS2}
+%   {op_assign, Name, TreeA}
+%   {stmt_if, TreeB, TreeBlockIf, TreeBlockElse]
+%   {stmt_while, TreeB, TreeBlock}
+%   bool_true
+%   bool_false
+%   {var, Name}
+%   {num, Number}
+%   {op_add, TreeA1, TreeA2}
+%   {op_sub, TreeA1, TreeA2}
+%   {op_mult, TreeA1, TreeA2}
+%   {op_div, TreeA1, TreeA2}
+%   {op_and, TreeB1, TreeB2}
+%   {op_or, TreeB1, TreeB2}
+%   {op_gt, TreeA1, TreeA2}
+%   {op_lt, TreeA1, TreeA2}
+```
+
+Example: Testcase 0 
 
 ```go
 fact := 1 ;
@@ -193,7 +215,7 @@ while ( cur > 1 )
 cur := 0
 ```
 
-then gives the syntax tree
+is turned into the syntax tree
 
 ```erlang
 Tree={semicolon,
