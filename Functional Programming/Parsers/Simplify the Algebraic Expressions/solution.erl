@@ -35,7 +35,7 @@ run(Prog) ->
           debug("Tree=~p~n", [Tree]),
           P = eval(Tree),
           debug("P=~p~n", [P]),
-          print(P)
+          print_poly(P)
       end
   end.
 
@@ -141,7 +141,7 @@ eval_minus(P) ->
 
 
 % print the polynomial map
-print(P) ->
+print_poly(P) ->
   Deg = degree(P),
   print_deg(Deg, P),
   io:format("~n").
@@ -149,22 +149,36 @@ print(P) ->
 
 % highest degree monomial
 print_deg(Deg, P) ->
-  case maps:get(Deg, P) of
+  print_mono(Deg, P),
+  print_lesser(Deg-1, P).
+
+
+print_mono(K, P) ->
+  case maps:get(K, P) of
     1 ->
-      ok;
+      print_unit(K);
     -1 ->
-      io:format("-");
+      io:format("-"),
+      print_unit(K);
     C ->
       io:format("~p", [C])
   end,
-  print_x(Deg),
-  print(Deg-1, P).
+  print_x(K).
+
+
+print_unit(K) ->
+  case K =:= 0 of
+    false ->
+      ok;
+    true ->
+      io:format("1")
+  end.
 
 
 % lesser degree monomials
-print(-1, _P) ->
+print_lesser(-1, _P) ->
   ok;
-print(K, P) ->
+print_lesser(K, P) ->
   case maps:get(K, P) of
     0 ->
       ok;
@@ -177,15 +191,15 @@ print(K, P) ->
       end,
       case C of
         1 ->
-          ok;
+          print_unit(K);
         -1 ->
-          ok;
+          print_unit(K);
         _Else ->
           io:format("~p", [abs(C)])
       end,
       print_x(K)
   end,
-  print(K-1, P).
+  print_lesser(K-1, P).
 
 
 % print x^k
