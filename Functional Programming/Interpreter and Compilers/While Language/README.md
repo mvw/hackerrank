@@ -71,6 +71,28 @@ Tokens=[{var,"a",1,0},
 The last two numbers are line (starting at line 1) and column (starting at column 0),
 which are useful in error messages.
 
+```erlang
+% List of tokens:
+%   {op_a, Op, Line, Col}  Op = op_add | op_sub | op_mult | op_div
+%   {op_b, Op, Line, Col}  Op = op_and | op_or
+%   {op_r, Op, Line, Col}  Op = op_gt | op_lt
+%   {var, Name, Line, Col}
+%   {num, Number, Line, Col}
+%   {paren_open, Line, Col}
+%   {paren_close, Line, Col}
+%   {semicolon, Line, Col}
+%   {curly_open, Line, Col}
+%   {curly_close, Line, Col}
+%   {op_assign, Line, Col}
+%   {bool_true, Line, Col}
+%   {bool_false, Line, Col}
+%   {stmt_if, Line, Col}
+%   {stmt_then, Line, Col}
+%   {stmt_else, Line, Col}
+%   {stmt_while, Line, Col}
+%   {stmt_do, Line, Col}
+```
+
 I would have prefered to use `if` instead of `stmt_it`, but it turned out that
 there are reserved words in Erlang, which can not be used for atoms, only
 indirectly by quoting them, e.g. `'if'`, which I liked less.
