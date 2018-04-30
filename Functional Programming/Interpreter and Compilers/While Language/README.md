@@ -4,7 +4,7 @@
 https://www.hackerrank.com/challenges/while-language-fp/problem
 
 ## Solution
-I frist wrote the tokenizer, then a recursive descent parser, finally the evaluation
+I first wrote the tokenizer, then a recursive descent parser, finally the evaluation
 routine.
 
 ### Pass 1: Lexical Analysis
