@@ -245,6 +245,24 @@ Tree={semicolon,
 ### Pass 3: Evaluation
 Have a look at the code. It is straight forward.
 
+Example: 
+
+```erlang
+eval_s({semicolon, TreeS1, TreeS2}, Vars) ->
+  Vars1 = eval_s(TreeS1, Vars),
+  eval_s(TreeS2, Vars1);
+```
+
+The above code evaluates the node `{semicolon, TreeS1, TreeS2}`, which stands for the recognized
+code `S1 ; S2`. 
+
+This is done against the current set of variables and their values stored in `Vars`. 
+
+And indeed we first evaluate `S1` against `Vars`, which might have led to variable 
+changes, all of them stored in `Vars1`.  
+
+Then we evaluate `S2` against `Vars1` and return the eventually changed variables.
+
 ## After the task
 The only other accepted Erlang solution is by [tamarit27](https://www.hackerrank.com/tamarit27).
 
