@@ -28,10 +28,12 @@ I enjoyed my handwritten parser for
 so I recycled it for this parser task.
 
 ### Pass 1: Lexical Analysis
+
 Example: The line
 ```julia
 10x + 2x - (3x + 6)/3
 ```
+
 is turned into
 ```erlang
 Tokens=[{num,10,0},
@@ -49,10 +51,10 @@ Tokens=[{num,10,0},
         {op_a,op_div,19},
         {num,3,20}]
 ```
+
 where we have only the column number as extra argument, still only used for nicer error messages.
 
 The list of tokens became shorter:
-
 ```erlang
 %   {op_a, Op, Col}  Op = op_add | op_sub | op_mult | op_div | op_exp
 %   {x, Col}
@@ -64,7 +66,6 @@ The list of tokens became shorter:
 ### Pass 2: Syntactic Analysis
 
 The parser is written to suit this grammar:
-
 ```erlang
 % we implement the production
 %   a -> x | n | a op_a a | a a | (a)
@@ -88,7 +89,6 @@ Tricky was the need to recognize
 
 The first need means that we might consider the recognition as not successful but not failed yet,
 communicating this by an empty tree structure to the callers:
-
 ```erlang
 a_base(Tokens) ->
   {Tokens, tree_empty}.
@@ -97,7 +97,6 @@ a_base(Tokens) ->
 The callers must then decide if this is acceptable or not.
 
 The second need led to a new clause for the recognition of `a` terms:
-
 ```erlang
 a([{op_a, op_sub, _Col}|Tokens]) ->
   case a_term(Tokens) of
@@ -112,7 +111,6 @@ a([{op_a, op_sub, _Col}|Tokens]) ->
 It will add the unary minus node `{op_minus, Tree}` to the syntax tree.
 
 In total we have these nodes: 
-
 ```erlang
 % List of nodes:
 %   Map : k -> a_k
@@ -125,13 +123,11 @@ In total we have these nodes:
 ```
 
 The example expression 
-
 ```julia
 10x + 2x - (3x + 6)/3
 ```
 
 results in
-
 ```erlang
 Tree={op_sub,{op_add,{op_mult,#{0 => 10,1 => 0,2 => 0,3 => 0,4 => 0,5 => 0},
                               #{0 => 0,1 => 1,2 => 0,3 => 0,4 => 0,5 => 0}},
@@ -146,31 +142,26 @@ Tree={op_sub,{op_add,{op_mult,#{0 => 10,1 => 0,2 => 0,3 => 0,4 => 0,5 => 0},
 ```
 
 where the map data structure
-
 ```erlang
 #{0 => 10,1 => 0,2 => 0,3 => 0,4 => 0,5 => 0}
 ```
 
 holds the coefficients of the polynomial
-
 ```julia
 p(x) = a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0
 ```
 
 here
-
 ```julia
 p(x) = 10
 ```
 
 and
-
 ```erlang
 #{0 => 0,1 => 1,2 => 0,3 => 0,4 => 0,5 => 0}
 ```
 
 represents
-
 ```erlang
 p(x) = x
 ```
@@ -186,11 +177,10 @@ My initial thoughts on the problem were along the line that the syntax tree will
 reduced by some number of clever simplification operations until we end up with the syntax 
 tree for the simplified expression.
 
-And this is indeed what I implemented only that the simplification operations turned
+And this is indeed what I implemented, only that the simplification operations turned
 out to be ordinary calculations on polynomials of degree 5 or less.
 
 Addition of two polynomials can be achieved by adding the coefficients:
-
 ```erlang
 eval_add(P1, P2) ->
   lists:foldl(fun(K, Map) ->
@@ -205,7 +195,6 @@ Multiplication of two polynomials means calculating the finite Cauchy products.
 
 The problem task states that we encounter no polynomial with degree larger than
 5, so this code is sufficient:
-
 ```erlang
 eval_mult(P1, P2) ->
   {A0, A1, A2, A3, A4, A5} = p(P1),
@@ -223,7 +212,6 @@ eval_mult(P1, P2) ->
 
 Division of a polynomial by an integer might lead to fractions, which
 we handle via the `rational/2` function:
-
 ```erlang
 eval_div(P1, P2) ->
   C2 = maps:get(0, P2),
@@ -271,19 +259,16 @@ eval_exp(P1, P2) ->
 ```
 
 The example expression 
-
 ```julia
 10x + 2x - (3x + 6)/3
 ```
 
 results in the evaluation
-
 ```erlang
 P=#{0 => 45,1 => 61,2 => 18,3 => 0,4 => 5,5 => 2}
 ```
 
 This then is printed as
-
 ```julia
 2x^5 + 5x^4 + 18x^2 + 61x + 45
 ```
