@@ -277,7 +277,8 @@ The code to print this representation is a bit more uglier than I would like it 
 but it needs to handle various cases, like:
 - `x + 3` instead of `+x^1 + 3 x^0`
 - `x^2 + 5` instead of `+x^2 + 0 x^1 + 5 x^0`
-- `-x^3` instead pf `-1 x^3`
+- `-x^3` instead of `-1 x^3`
+
 and so on.
 
 
