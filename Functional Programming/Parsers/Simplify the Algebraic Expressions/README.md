@@ -182,6 +182,120 @@ but it is more convenient for the evaluation in the next pass.
 
 ### Pass 3: Evaluation
 
+My initial thoughts on the problem were along the line that the syntax tree will get
+reduced by some number of clever simplification operations until we end up with the syntax 
+tree for the simplified expression.
+
+And this is indeed what I implemented only that the simplification operations turned
+out to be ordinary calculations on polynomials of degree 5 or less.
+
+Addition of two polynomials can be achieved by adding the coefficients:
+
+```erlang
+eval_add(P1, P2) ->
+  lists:foldl(fun(K, Map) ->
+    C1 = maps:get(K, P1),
+    C2 = maps:get(K, P2),
+    C = C1+C2,
+    maps:put(K, C, Map)            
+  end, maps:new(), lists:seq(0, 5)).
+```
+
+Multiplication of two polynomials means calculating the finite Cauchy products.
+
+The problem task states that we encounter no polynomial with degree larger than
+5, so this code is sufficient:
+
+```erlang
+eval_mult(P1, P2) ->
+  {A0, A1, A2, A3, A4, A5} = p(P1),
+  {B0, B1, B2, B3, B4, B5} = p(P2),
+  %
+  C0 = A0*B0,
+  C1 = A0*B1+A1*B0,
+  C2 = A0*B2+A1*B1+A2*B0,
+  C3 = A0*B3+A1*B2+A2*B1+A3*B0,
+  C4 = A0*B4+A1*B3+A2*B2+A3*B1+A4*B0,
+  C5 = A0*B5+A1*B4+A2*B3+A3*B2+A4*B1+A5*B0,
+  %
+  p(C0, C1, C2, C3, C4, C5).
+```
+
+Division of a polynomial by an integer might lead to fractions, which
+we handle via the `rational/2` function:
+
+```erlang
+eval_div(P1, P2) ->
+  C2 = maps:get(0, P2),
+  lists:foldl(fun(K, Map) ->
+    C1 = maps:get(K, P1),
+    C = rational(C1, C2),
+    maps:update(K, C, Map)
+  end, P1, lists:seq(0, 5)).
+```
+
+However it seems the test cases always lead to integer coefficients,
+as I did not need to implement rational operations for the
+other polynomial operations.
+
+Also exponentiation is constrained to integers and degree 1 polynomials.
+So the implementation sticks to only these two cases:
+
+```erlang
+eval_exp(P1, P2) ->
+  Deg1 = degree(P1),
+  case Deg1 of
+    1 ->
+      C1 = maps:get(1, P1),
+      C2 = maps:get(0, P2),
+      case C2 of
+        0 ->
+          p(C1, 0, 0, 0, 0, 0);
+        1 ->
+          p(0, C1, 0, 0, 0, 0);
+        2 ->
+          p(0, 0, C1, 0, 0, 0);
+        3 ->
+          p(0, 0, 0, C1, 0, 0);
+        4 ->
+          p(0, 0, 0, 0, C1, 0);
+        5 ->
+          p(0, 0, 0, 0, 0, C1)
+      end;
+    0 ->
+      C1 = maps:get(0, P1),
+      C2 = maps:get(0, P2),
+      C = pow(C1, C2),
+      p(C, 0, 0, 0, 0, 0)
+  end.
+```
+
+The example expression 
+
+```julia
+10x + 2x - (3x + 6)/3
+```
+
+results in the evaluation
+
+```erlang
+P=#{0 => 45,1 => 61,2 => 18,3 => 0,4 => 5,5 => 2}
+```
+
+This then is printed as
+
+```julia
+2x^5 + 5x^4 + 18x^2 + 61x + 45
+```
+
+The code to print this representation is a bit more uglier than I would like it to be,
+but it needs to handle various cases, like:
+- `x + 3` instead of `+x^1 + 3 x^0`
+- `x^2 + 5` instead of `+x^2 + 0 x^1 + 5 x^0`
+- `-x^3` instead pf `-1 x^3`
+and so on.
+
+
 ## After the task
 The first other accepted Erlang solution is again by [tamarit27](https://www.hackerrank.com/tamarit27).
 This solution seems handwritten as well. It is more compact than my solution.
