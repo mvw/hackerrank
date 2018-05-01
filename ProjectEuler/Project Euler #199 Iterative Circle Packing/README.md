@@ -42,7 +42,7 @@ Here is an overview image with some screen shots:
 
 ![xmas2017](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/xmas2017.png)
 
-I might extend it and clean it at some later time.
+I might extend it and clean it up at some later time. :joy_cat:
 
 
 ## Experience
