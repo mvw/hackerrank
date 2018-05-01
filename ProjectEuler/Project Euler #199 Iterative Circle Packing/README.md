@@ -35,12 +35,12 @@ and then looked at some of the examples.
 
 And the result is [gui.erl](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/gui.erl)
 
-It is not very comfortable yet, the two parameters `m` and `n`are hard coded right now, but it
+It is not very comfortable yet, e.g. the two parameters `n` and `m`are hard-coded, but it
 does its job. :smirk_cat:
 
-Here is an overview with some screen shots:
+Here is an overview image with some screen shots:
 
-![Overview](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/xmas2017.png)
+![xmas2017](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/xmas2017.png)
 
 I might extend it and clean it at some later time.
 
