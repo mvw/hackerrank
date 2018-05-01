@@ -131,6 +131,7 @@ The example expression
 ```
 
 results in
+
 ```erlang
 Tree={op_sub,{op_add,{op_mult,#{0 => 10,1 => 0,2 => 0,3 => 0,4 => 0,5 => 0},
                               #{0 => 0,1 => 1,2 => 0,3 => 0,4 => 0,5 => 0}},
@@ -157,9 +158,26 @@ p(x) = a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0
 ```
 
 here
+
 ```julia
 p(x) = 10
 ```
+
+and
+
+```erlang
+#{0 => 0,1 => 1,2 => 0,3 => 0,4 => 0,5 => 0}
+```
+
+represents
+
+```erlang
+p(x) = x
+```
+
+As the input expressions only hold constants or multiples of `x`, we could have
+dropped the coefficients `a_5` to `a_2` to increase readability at this pass,
+but it is more convenient for the evaluation in the next pass.
 
 
 ### Pass 3: Evaluation
