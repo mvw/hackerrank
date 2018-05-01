@@ -9,7 +9,7 @@ Calculate the area of an interesting recursive geometric construction.
 ## Solution
 To be published at a later time.
 
-I am not sure yet, what time lag is appropriate for this running contest. 
+I am not sure yet, what time lag is appropriate for this active contest. 
 
 ## My first Erlang GUI application
 Of course this problem caused an itch to draw it. :smiley_cat:
