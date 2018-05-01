@@ -24,7 +24,7 @@ remember.
 So I took a look at Erlang's GUI capabilities.
 It turned out that it still features bindings for [wxWidgets](http://www.wxwidgets.org/).
 
-I booted via Michael Turner 's tutorial at http://www.idiom.com/~turner/wxtut/wxwidgets.html
+I booted via [Michael Turner's tutorial](http://www.idiom.com/~turner/wxtut/wxwidgets.html)
 and looking at some of the examples that come with Erlang.
 
 And the result is [gui.erl](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/gui.erl)
