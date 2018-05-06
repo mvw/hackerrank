@@ -5,6 +5,7 @@ http://www.hackerrank.com/contests/projecteuler/challenges/euler199
 
 Calculate the area of an interesting recursive geometric construction.
 
+![overview](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/xmas2017.png)
 
 ## Solution
 To be published at a later time.
@@ -38,9 +39,7 @@ And the result is [gui.erl](https://github.com/mvw/hackerrank/blob/master/Projec
 It is not very comfortable yet, e.g. the two parameters `n` and `m`are hard-coded, but it
 does its job. :smirk_cat:
 
-Here is an overview image with some screen shots:
-
-![xmas2017](https://github.com/mvw/hackerrank/blob/master/ProjectEuler/Project%20Euler%20%23199%20Iterative%20Circle%20Packing/xmas2017.png)
+The screen shots above are from this program.
 
 I might extend it and clean it up at some later time. :joy_cat:
 
